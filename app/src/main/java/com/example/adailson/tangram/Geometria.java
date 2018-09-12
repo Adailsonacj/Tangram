@@ -11,19 +11,26 @@ public abstract class Geometria {
     private GL10 gl;
     private float [] coordenadas;
     private FloatBuffer buffer;
+    private float anguloRotacao;
+    private float posX;
+    private float posY;
 
     public Geometria(GL10 gl){
         this.gl = gl;
     }
 
-    public abstract void desenha(int first, int count);
+    public abstract void desenha();
 
     public void setCor(float red, float green, float blue, float alpha){
         gl.glColor4f(red, green, blue, alpha);
     }
 
-    public void setAng(float angulo, float posX, float posY, float posZ){
-        gl.glRotatef(angulo, posX, posY, posZ);
+    public void setAnguloRotacao(float angulo){
+        this.anguloRotacao = angulo;
+    }
+
+    public void setPos(float posX, float posY){
+        gl.glTranslatef(posX, posY, 0);
     }
 
     public GL10 getGl() {
@@ -42,7 +49,35 @@ public abstract class Geometria {
         this.coordenadas = coordenadas;
     }
 
-    public void criarBuffer() {
+    public FloatBuffer getBuffer() {
+        return buffer;
+    }
+
+    public void setBuffer(FloatBuffer buffer) {
+        this.buffer = buffer;
+    }
+
+    public float getAnguloRotacao() {
+        return anguloRotacao;
+    }
+
+    public float getPosX() {
+        return posX;
+    }
+
+    public void setPosX(float posX) {
+        this.posX = posX;
+    }
+
+    public float getPosY() {
+        return posY;
+    }
+
+    public void setPosY(float posY) {
+        this.posY = posY;
+    }
+
+    public void registraBuffer() {
         this.buffer = Geometria.criaNIOBuffer(coordenadas);
         //Solicita a liberação do recurso array de vertices para a OPENGL
         gl.glEnableClientState(GL10.GL_VERTEX_ARRAY);

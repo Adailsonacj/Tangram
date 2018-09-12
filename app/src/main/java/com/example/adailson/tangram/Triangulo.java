@@ -14,7 +14,8 @@ public class Triangulo extends Geometria{
     }
 
     @Override
-    public void desenha(int first, int count) {
-        super.getGl().glDrawArrays(GL10.GL_TRIANGLES, first, count);
+    public void desenha() {
+        super.getGl().glTranslatef(super.getPosX(), super.getPosY(), 0);
+        super.getGl().glDrawArrays(GL10.GL_TRIANGLE_STRIP, 0, 3);
     }
 }
