@@ -14,6 +14,8 @@ public abstract class Geometria {
     private float anguloRotacao;
     private float posX;
     private float posY;
+    private float scaleX;
+    private float scaleY;
 
     public Geometria(GL10 gl){
         this.gl = gl;
@@ -27,10 +29,6 @@ public abstract class Geometria {
 
     public void setAnguloRotacao(float angulo){
         this.anguloRotacao = angulo;
-    }
-
-    public void setPos(float posX, float posY){
-        gl.glTranslatef(posX, posY, 0);
     }
 
     public GL10 getGl() {
@@ -75,6 +73,22 @@ public abstract class Geometria {
 
     public void setPosY(float posY) {
         this.posY = posY;
+    }
+
+    public float getScaleX() {
+        return scaleX;
+    }
+
+    public void setScaleX(float scaleX) {
+        this.scaleX = scaleX;
+    }
+
+    public float getScaleY() {
+        return scaleY;
+    }
+
+    public void setScaleY(float scaleY) {
+        this.scaleY = scaleY;
     }
 
     public void registraBuffer() {

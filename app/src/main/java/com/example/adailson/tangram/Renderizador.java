@@ -49,20 +49,22 @@ class Renderizador implements GLSurfaceView.Renderer {
         tri = new Triangulo(gl);
         float[] co1 = new float[]{
                 0, 0,
-                800, 0,
-                800 / 2, 800
+                125, 0,
+                62.5f, 125
         };
         tri.setCoordenadas(co1);
-        tri.setPosY(10);
-        tri.setPosX(10);
+        tri.setAnguloRotacao(20);
+        //tri.setPos(200,200);
+        tri.setPosX(350);
+
 
 
 
         tri2 = new Triangulo(gl);
         float[] co2 = new float[]{
-                0, 0,
-                400, 0,
-                400 / 2, 400
+                -500 / 2, 0,
+                500 / 2, 0,
+                0, 500 / 2
         };
         tri2.setCoordenadas(co2);
 
@@ -71,18 +73,19 @@ class Renderizador implements GLSurfaceView.Renderer {
         para = new Paralelogramo(gl);
         float[] co3 = new float[]{
                 0, 0,
-                700 / 2, 0,
-                700 / 4, 700 / 4,
-                3 * 700 / 4, 700 / 4
+                500 / 2, 0,
+                500 / 4, 500 / 4,
+                3 * 500 / 4, 500 / 4
         };
         para.setCoordenadas(co3);
+        para.setPosX(500);
 
         qua = new Quadrado(gl);
         float[] co4 = new float[]{
-                0,200,
+                0,125,
                 0,0,
-                200,200,
-                200,0
+                125,125,
+                125 ,0
         };
         qua.setCoordenadas(co4);
 
@@ -100,11 +103,11 @@ class Renderizador implements GLSurfaceView.Renderer {
 
         tri2.setCor(0, 0, 1, 0);
         tri2.registraBuffer();
-        tri2.desenha();
+        //tri2.desenha();
 
-        para.setCor(1,0,0,0);
+        para.setCor(1,0,1,0);
         para.registraBuffer();
-        //para.desenha();
+        para.desenha();
 
         qua.setCor(1,1,0,0);
         qua.registraBuffer();
