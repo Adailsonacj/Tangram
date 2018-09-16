@@ -16,6 +16,9 @@ class Renderizador implements GLSurfaceView.Renderer {
 
     Triangulo tri;
     Triangulo tri2;
+    Triangulo tri3;
+    Triangulo tri4;
+    Triangulo tri5;
     Quadrado qua;
     Paralelogramo para;
     private static int larguraX;
@@ -24,7 +27,7 @@ class Renderizador implements GLSurfaceView.Renderer {
 
     @Override
     public void onSurfaceCreated(GL10 gl, EGLConfig config) {
-        gl.glClearColor(0, 0, 0, 0);
+        gl.glClearColor(0, 0,0, 1);
     }
 
     @Override
@@ -47,49 +50,34 @@ class Renderizador implements GLSurfaceView.Renderer {
 
 
         tri = new Triangulo(gl);
-        float[] co1 = new float[]{
-                0, 0,
-                125, 0,
-                62.5f, 125
-        };
-        tri.setCoordenadas(co1);
-        tri.setAnguloRotacao(20);
-        //tri.setPos(200,200);
-        tri.setPosX(350);
-
-
-
-
-        tri2 = new Triangulo(gl);
-        float[] co2 = new float[]{
-                -500 / 2, 0,
-                500 / 2, 0,
-                0, 500 / 2
-        };
-        tri2.setCoordenadas(co2);
-
-
+        tri.setPos(600, 100);
+        tri.setAnguloRotacao(180);
 
         para = new Paralelogramo(gl);
-        float[] co3 = new float[]{
-                0, 0,
-                500 / 2, 0,
-                500 / 4, 500 / 4,
-                3 * 500 / 4, 500 / 4
-        };
-        para.setCoordenadas(co3);
-        para.setPosX(500);
+        para.setPos(500, 0);
+
+        tri2 = new Triangulo(gl);
+        tri2.setPos(600, 130);
+        tri2.setScale(1.50f, 1.50f);
+
+        tri3 = new Triangulo(gl);
+        tri3.setAnguloRotacao(-90);
+        tri3.setPos(600, 430);
+        tri3.setScale(1.50f, 1.50f);
 
         qua = new Quadrado(gl);
-        float[] co4 = new float[]{
-                0,125,
-                0,0,
-                125,125,
-                125 ,0
-        };
-        qua.setCoordenadas(co4);
+        qua.setPos(475, 130);
+        qua.setScale(1.25f, 1.25f);
 
+        tri4 = new Triangulo(gl);
+        tri4.setPos(600,380);
+        tri4.setAnguloRotacao(-135);
+        tri4.setScale(0.875f, 0.875f);
 
+        tri5 = new Triangulo(gl);
+        tri5.setPos(475, 255);
+        tri5.setAnguloRotacao(-135);
+        tri5.setScale(0.875f, 0.875f);
 
     }
 
@@ -103,15 +91,27 @@ class Renderizador implements GLSurfaceView.Renderer {
 
         tri2.setCor(0, 0, 1, 0);
         tri2.registraBuffer();
-        //tri2.desenha();
+        tri2.desenha();
 
-        para.setCor(1,0,1,0);
+        tri3.setCor(1, 0, 0, 0);
+        tri3.registraBuffer();
+        tri3.desenha();
+
+        para.setCor(1, 0, 1, 0);
         para.registraBuffer();
         para.desenha();
 
-        qua.setCor(1,1,0,0);
+        qua.setCor(0.50f, 0.50f, 1, 0);
         qua.registraBuffer();
         qua.desenha();
+
+        tri4.setCor(1, 1, 0, 0);
+        tri4.registraBuffer();
+        tri4.desenha();
+
+        tri5.setCor(1, 0.69f, 0, 0);
+        tri5.registraBuffer();
+        tri5.desenha();
 
     }
 }

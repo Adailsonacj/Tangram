@@ -9,25 +9,26 @@ import javax.microedition.khronos.opengles.GL10;
 public abstract class Geometria {
 
     private GL10 gl;
-    private float [] coordenadas;
+    private float[] coordenadas;
     private FloatBuffer buffer;
     private float anguloRotacao;
     private float posX;
     private float posY;
-    private float scaleX;
-    private float scaleY;
+    private float scaleX = 1;
+    private float scaleY = 1;
+    private float red, green, blue, alpha;
 
-    public Geometria(GL10 gl){
+    public Geometria(GL10 gl) {
         this.gl = gl;
     }
 
     public abstract void desenha();
 
-    public void setCor(float red, float green, float blue, float alpha){
+    public void setCor(float red, float green, float blue, float alpha) {
         gl.glColor4f(red, green, blue, alpha);
     }
 
-    public void setAnguloRotacao(float angulo){
+    public void setAnguloRotacao(float angulo) {
         this.anguloRotacao = angulo;
     }
 
@@ -63,32 +64,28 @@ public abstract class Geometria {
         return posX;
     }
 
-    public void setPosX(float posX) {
+    public void setPos(float posX, float posY) {
         this.posX = posX;
+        this.posY = posY;
     }
 
     public float getPosY() {
         return posY;
     }
 
-    public void setPosY(float posY) {
-        this.posY = posY;
-    }
-
     public float getScaleX() {
         return scaleX;
     }
 
-    public void setScaleX(float scaleX) {
+    public void setScale(float scaleX, float scaleY) {
         this.scaleX = scaleX;
+        this.scaleY = scaleY;
+        //gl.glScalef(scaleX, scaleY, 1);
+
     }
 
     public float getScaleY() {
         return scaleY;
-    }
-
-    public void setScaleY(float scaleY) {
-        this.scaleY = scaleY;
     }
 
     public void registraBuffer() {
