@@ -23,7 +23,6 @@ class Renderizador implements GLSurfaceView.Renderer, View.OnTouchListener {
     Triangulo tri4;
     Triangulo tri5;
     Quadrado qua;
-    float angulo = 0;
     GL10 gl;
     Paralelogramo para;
 
@@ -31,7 +30,6 @@ class Renderizador implements GLSurfaceView.Renderer, View.OnTouchListener {
     float posY = 0;
     private static int larguraX;
     private static int alturaY;
-    ArrayList<Geometria> vetorGeo = new ArrayList();
 
 
     @Override
@@ -60,38 +58,36 @@ class Renderizador implements GLSurfaceView.Renderer, View.OnTouchListener {
         gl.glLoadIdentity();
         gl.glViewport(0, 0, largura, altura);
 
+        tri = new Triangulo(gl);
+        tri.setPos(600, 100);
+        tri.setAnguloRotacao(180);
 
-//        tri = new Triangulo(gl);
-//        tri.setPos(600, 100);
-//        tri.setAnguloRotacao(180);
-//
-//        para = new Paralelogramo(gl);
-//        para.setPos(500, 0);
-//
-//        tri2 = new Triangulo(gl);
-//        tri2.setPos(600, 130);
-//        tri2.setScale(1.50f, 1.50f);
-//
-//        tri3 = new Triangulo(gl);
-//        tri3.setAnguloRotacao(-90);
-//        tri3.setPos(600, 430);
-//        tri3.setScale(1.50f, 1.50f);
+        para = new Paralelogramo(gl);
+        para.setPos(500, 0);
+
+        tri2 = new Triangulo(gl);
+        tri2.setPos(600, 130);
+        tri2.setScale(1.50f, 1.50f);
+
+        tri3 = new Triangulo(gl);
+        tri3.setAnguloRotacao(-90);
+        tri3.setPos(600, 430);
+        tri3.setScale(1.50f, 1.50f);
 
         qua = new Quadrado(gl);
         qua.setScale(1.25f, 1.25f);
         qua.setGl(gl);
         qua.registraBuffer();
 
+        tri4 = new Triangulo(gl);
+        tri4.setPos(600, 380);
+        tri4.setAnguloRotacao(-135);
+        tri4.setScale(0.875f, 0.875f);
 
-//        tri4 = new Triangulo(gl);
-//        tri4.setPos(600,380);
-//        tri4.setAnguloRotacao(-135);
-//        tri4.setScale(0.875f, 0.875f);
-//
-//        tri5 = new Triangulo(gl);
-//        tri5.setPos(475, 255);
-//        tri5.setAnguloRotacao(-135);
-//        tri5.setScale(0.875f, 0.875f);
+        tri5 = new Triangulo(gl);
+        tri5.setPos(475, 255);
+        tri5.setAnguloRotacao(-135);
+        tri5.setScale(0.875f, 0.875f);
 
     }
 
@@ -99,39 +95,34 @@ class Renderizador implements GLSurfaceView.Renderer, View.OnTouchListener {
     public void onDrawFrame(GL10 gl) {
         gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
 
-//        tri.setCor(0, 1, 0, 0);
-//        tri.registraBuffer();
-//        tri.desenha();
-//
-//        tri2.setCor(0, 0, 1, 0);
-//        tri2.registraBuffer();
-//        tri2.desenha();
-//
-//        tri3.setCor(1, 0, 0, 0);
-//        tri3.registraBuffer();
-//        tri3.desenha();
-//
-//        para.setCor(1, 0, 1, 0);
-//        para.registraBuffer();
-//        para.desenha();
-//        qua.registraBuffer();
+        tri.setCor(0, 1, 0, 0);
+        tri.registraBuffer();
+        tri.desenha();
 
-//        qua.setPos(posX, posY);
-//        qua.setCor(0.50f, 0.50f, 1, 0);
-//        qua.desenha();
-        for (int i = 0; i < vetorGeo.size(); i++) {
-            vetorGeo.get(i).setPos(posX,posY);
-            vetorGeo.get(i).registraBuffer();
-            vetorGeo.get(i).desenha();
-        }
+        tri2.setCor(0, 0, 1, 0);
+        tri2.registraBuffer();
+        tri2.desenha();
 
-//        tri4.setCor(1, 1, 0, 0);
-//        tri4.registraBuffer();
-//        tri4.desenha();
-//
-//        tri5.setCor(1, 0.69f, 0, 0);
-//        tri5.registraBuffer();
-//        tri5.desenha();
+        tri3.setCor(1, 0, 0, 0);
+        tri3.registraBuffer();
+        tri3.desenha();
+
+        para.setCor(1, 0, 1, 0);
+        para.registraBuffer();
+        para.desenha();
+        qua.registraBuffer();
+
+        qua.setPos(posX, posY);
+        qua.setCor(0.50f, 0.50f, 1, 0);
+        qua.desenha();
+
+        tri4.setCor(1, 1, 0, 0);
+        tri4.registraBuffer();
+        tri4.desenha();
+
+        tri5.setCor(1, 0.69f, 0, 0);
+        tri5.registraBuffer();
+        tri5.desenha();
 
     }
 
@@ -140,13 +131,6 @@ class Renderizador implements GLSurfaceView.Renderer, View.OnTouchListener {
         if (motionEvent.getAction() == MotionEvent.ACTION_MOVE) {
             posX = (int) motionEvent.getX();
             posY = alturaY - (int) motionEvent.getY();
-        } else if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
-            posX = (int) motionEvent.getX();
-            posY = alturaY - (int) motionEvent.getY();
-            Quadrado qua = new Quadrado(gl);
-            qua.setPos(posX, posY);
-            qua.setCor((float) Math.random(), (float) Math.random(), (float) Math.random(), 1);
-            vetorGeo.add(qua);
         }
         return true;
     }

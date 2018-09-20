@@ -12,8 +12,8 @@ public class Triangulo extends Geometria {
         super(gl);
         float[] co1 = new float[]{
                 0, 0,
-                tamanhoFixo , 0,
-                tamanhoFixo / 2, tamanhoFixo/2
+                tamanhoFixo, 0,
+                tamanhoFixo / 2, tamanhoFixo / 2
         };
         super.setCoordenadas(co1);
     }
@@ -24,8 +24,7 @@ public class Triangulo extends Geometria {
         super.getGl().glTranslatef(super.getPosX(), super.getPosY(), 0);
         super.getGl().glRotatef(super.getAnguloRotacao(), 0, 0, 1);
         super.getGl().glScalef(super.getScaleX(), super.getScaleY(), 1);
-        //super.getGl().glColor4f(1, 0, 0, 1);
-        super.getGl().glVertexPointer(2, GL10.GL_FLOAT, 0, super.getBuffer());
+        super.getGl().glColor4f(super.red, super.green, super.blue, super.alpha);
         super.getGl().glDrawArrays(GL10.GL_TRIANGLE_STRIP, 0, 3);
     }
 }

@@ -24,6 +24,7 @@ public class Paralelogramo extends Geometria {
         super.getGl().glTranslatef(super.getPosX(), super.getPosY(), 0);
         super.getGl().glRotatef(super.getAnguloRotacao(), 0, 0, 1);
         super.getGl().glScalef(super.getScaleX(), super.getScaleY(), 1);
+        super.getGl().glColor4f(super.red, super.green, super.blue, super.alpha);
         super.getGl().glDrawArrays(GL10.GL_TRIANGLE_STRIP, 0, 4);
     }
 }
