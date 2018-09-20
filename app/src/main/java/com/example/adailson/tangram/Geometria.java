@@ -16,7 +16,7 @@ public abstract class Geometria {
     private float posY;
     private float scaleX = 1;
     private float scaleY = 1;
-    private float red, green, blue, alpha;
+    public float red, green, blue, alpha;
 
     public Geometria(GL10 gl) {
         this.gl = gl;
@@ -25,7 +25,10 @@ public abstract class Geometria {
     public abstract void desenha();
 
     public void setCor(float red, float green, float blue, float alpha) {
-        gl.glColor4f(red, green, blue, alpha);
+        this.red = red;
+        this.green= green;
+        this.blue=blue;
+        this.alpha = alpha;
     }
 
     public void setAnguloRotacao(float angulo) {

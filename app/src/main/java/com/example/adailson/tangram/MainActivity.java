@@ -23,6 +23,9 @@ public class MainActivity extends AppCompatActivity {
         //Associa o renderizador a superficie de desenho da tela.
         superficieDesenho.setRenderer(render);
 
+        superficieDesenho.setOnTouchListener(render);
+
+
         //Publica a sup de desenho na tela do app
         setContentView(superficieDesenho);
     }
